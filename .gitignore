@@ -1,0 +1,10 @@
+.env
+browser_profile/
+sniff.log
+.venv/
+last_search.json
+__pycache__/
+.pytest_cache/
+.scratch/**/spike-output.json
+.DS_Store
+.claude/worktrees/

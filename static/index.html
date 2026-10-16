@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Medicover bot</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="bar">
+    <h1>Medicover bot</h1>
+    <div class="status">
+      <span id="status-dot" class="dot"></span>
+      <span id="status-text">Łączenie z botem…</span>
+    </div>
+    <!-- Widoczne przy statusie „login_required” (renderStatus w app.js). -->
+    <div id="login-slot" class="login-slot" hidden>
+      <button id="manual-login" class="primary">Zaloguj ręcznie</button>
+      <span class="hint">Otworzy się okno przeglądarki. Zaloguj się, wpisz kod z maila i zaznacz «Dodaj do zaufanych urządzeń».</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" aria-label="Wyszukiwanie">
+      <h2>Wyszukiwanie</h2>
+      <div id="warnings" class="warnings" hidden></div>
+      <div id="error" class="error" hidden></div>
+
+      <div class="grid">
+        <div class="picker" id="pick-region">
+          <label>Miasto</label>
+          <input class="filter" type="search" placeholder="Szukaj…" autocomplete="off">
+          <div class="list" role="radiogroup"></div>
+          <div class="summary"></div>
+        </div>
+        <div class="picker" id="pick-specialty">
+          <label>Specjalizacja</label>
+          <input class="filter" type="search" placeholder="Szukaj…" autocomplete="off">
+          <div class="list" role="radiogroup"></div>
+          <div class="summary"></div>
+        </div>
+        <div class="picker" id="pick-clinics">
+          <label>Placówki <small>(brak wyboru = dowolna)</small></label>
+          <input class="filter" type="search" placeholder="Szukaj…" autocomplete="off">
+          <div class="list"></div>
+          <div class="summary"></div>
+        </div>
+        <div class="picker" id="pick-doctors">
+          <label>Lekarze <small>(brak wyboru = dowolny)</small></label>
+          <input class="filter" type="search" placeholder="Szukaj…" autocomplete="off">
+          <div class="list"></div>
+          <div class="summary"></div>
+        </div>
+      </div>
+
+      <div class="dates">
+        <label>Data od <input id="date-from" type="date"></label>
+        <label>Data do <input id="date-to" type="date"></label>
+        <span class="hint">Obie opcjonalne: bez „od” liczy się od dziś, bez „do” zakres jest otwarty.</span>
+      </div>
+
+      <div class="actions">
+        <button id="start" class="primary" disabled>Start</button>
+        <button id="stop" disabled>Stop</button>
+      </div>
+    </section>
+
+    <section class="panel" aria-label="Terminy">
+      <h2>Terminy</h2>
+      <table>
+        <thead><tr><th>Data</th><th>Godzina</th><th>Lekarz</th><th>Placówka</th></tr></thead>
+        <tbody id="slots"></tbody>
+      </table>
+    </section>
+
+    <section class="panel" aria-label="Log">
+      <h2>Log</h2>
+      <pre id="log" class="log"></pre>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

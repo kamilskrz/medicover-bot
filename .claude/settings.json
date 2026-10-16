@@ -1,0 +1,5 @@
+{
+  "permissions": {
+    "deny": ["Read(./.env)", "Read(./.env.*)", "Read(./browser_profile/**)", "Bash(cat .env*)", "Bash(grep * .env*)"]
+  }
+}
